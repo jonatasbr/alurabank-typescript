@@ -3,11 +3,19 @@ class NegociacaoController {
     private _inputData: HTMLInputElement;
     private _inputQuantidade: HTMLInputElement;
     private _inputValor: HTMLInputElement;
+    //pode deixar apenas abaixo, mas eu gostei de especificar o tipo
+    //private _negociacaoes = new Negociacoes();
+    private _negociacaoes: Negociacoes = new Negociacoes();
+
+    private _negociacoesView = new NegociacoesView('#negociacoesView');
 
     constructor() {
         this._inputData = <HTMLInputElement>document.querySelector('#data');
         this._inputQuantidade = <HTMLInputElement>document.querySelector('#quantidade');
         this._inputValor = <HTMLInputElement>document.querySelector('#valor');
+
+        // atualiza a view para exibir os dados do modelo, vazio
+        this._negociacoesView.update(this._negociacaoes);
     }
     
     adiciona(event: Event) {
@@ -18,7 +26,17 @@ class NegociacaoController {
             parseInt(this._inputQuantidade.value),
             parseFloat(this._inputValor.value)
         )
-        
-        console.log(negociacao);    
-    }
+
+        this._negociacaoes.adiciona(negociacao);
+
+        // depois de adicionar, atualiza a view novamente para refletir os dados
+        this._negociacoesView.update(this._negociacaoes);
+
+/*        this._negociacaoes.paraArray().forEach(negociacao => {
+            console.log(negociacao.data);
+            console.log(negociacao.quantidade);
+            console.log(negociacao.valor);
+        });    
+*/
+   }
 }
