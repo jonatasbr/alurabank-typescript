@@ -8,6 +8,7 @@ class NegociacaoController {
     private _negociacaoes: Negociacoes = new Negociacoes();
 
     private _negociacoesView = new NegociacoesView('#negociacoesView');
+    private _mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
         this._inputData = <HTMLInputElement>document.querySelector('#data');
@@ -31,6 +32,8 @@ class NegociacaoController {
 
         // depois de adicionar, atualiza a view novamente para refletir os dados
         this._negociacoesView.update(this._negociacaoes);
+        this._mensagemView.update('Negociação adicionada com sucesso.');
+
 
 /*        this._negociacaoes.paraArray().forEach(negociacao => {
             console.log(negociacao.data);
