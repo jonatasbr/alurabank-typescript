@@ -5,7 +5,6 @@ export function logarTempoDeExecucao(emSegundos: boolean = false) {
             const metodoOriginal = descriptor.value;
 
             descriptor.value = function(...args: any[]) {
-
                 let divisor = 1;
                 let unidade = 'milisegundos'
                 if(emSegundos) {
