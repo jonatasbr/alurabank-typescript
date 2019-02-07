@@ -6,7 +6,7 @@
         "noImplicitAny": true,
         "removeComments": true,
         "module": "system",
-        "strictNullChecks": true,
+        
         "experimentalDecorators": true
     },
     "include": [
